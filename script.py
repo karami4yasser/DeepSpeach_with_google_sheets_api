@@ -198,6 +198,7 @@ def main(ARGS):
                 wav_data = bytearray()
             text = stream_context.finishStream()
             text=text.replace("necks","next")
+            text=text.replace("men","next")
             text=text.replace("starts","start")
             text=text.replace("started","start")
             text=text.replace("stopped","stop")		
