@@ -196,8 +196,11 @@ def main(ARGS):
             if ARGS.savewav:
                 vad_audio.write_wav(os.path.join(ARGS.savewav, datetime.now().strftime("savewav_%Y-%m-%d_%H-%M-%S_%f.wav")), wav_data)
                 wav_data = bytearray()
-            text = stream_context.finishStream()			
-
+            text = stream_context.finishStream()
+            text=text.replace("necks","next")
+            text=text.replace("starts","start")
+            text=text.replace("started","start")
+            text=text.replace("stopped","stop")		
             print("Recognized: %s" % text)
             if "start" and "stop"  in text.split():
             	data=np.array(text.split())
@@ -218,8 +221,8 @@ def main(ARGS):
 	            	
 	            	nexts=np.where(needed=="next")[0]
 	            	if len(nexts)==0 :
-		            	print("no parametre 'next' was detected")
-	            	else:
+		            	print("no parametre 'next' was detected")	
+	            	elif len(nexts)!=0 :
 	            		print(f"{len(nexts)+1} numbers are detected")
 		            	first=needed[0:nexts[0]]
 		            	last=needed[nexts[-1]+1:]
@@ -241,8 +244,10 @@ def main(ARGS):
 		            	for i in nums:
 		            		
 		            		my_num.append(w2n.word_to_num(i))
-				global_data.append(my_num)	
+		            	#global_data.append(my_num)
 		            	print(my_num)
+		            
+		            	#global_data.append(my_num)
             stream_context = model.createStream()
 if __name__ == '__main__':
     DEFAULT_SAMPLE_RATE = 16000
