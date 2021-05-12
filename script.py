@@ -14,6 +14,17 @@ from time import sleep
 
 global global_data
 global_data=[]
+import gspread
+from oauth2client.service_account import ServiceAccountCredentials
+from pprint import pprint
+
+scope = ["https://spreadsheets.google.com/feeds",'https://www.googleapis.com/auth/spreadsheets',"https://www.googleapis.com/auth/drive.file","https://www.googleapis.com/auth/drive"]
+
+creds = ServiceAccountCredentials.from_json_keyfile_name("creds.json", scope)
+
+client = gspread.authorize(creds)
+
+sheet = client.open("test").sheet1
 
 logging.basicConfig(level=20)
 
@@ -204,7 +215,9 @@ def main(ARGS):
             text=text.replace("that","next")
             text=text.replace("starts","start")
             text=text.replace("started","start")
-            text=text.replace("stopped","stop")		
+            text=text.replace("stopped","stop")
+            text=text.replace("for the","forty")
+            text=text.replace("for","four")	
             print("Recognized: %s" % text)
             if "start" and "stop"  in text.split():
             	data=np.array(text.split())
@@ -250,8 +263,11 @@ def main(ARGS):
 		            		my_num.append(w2n.word_to_num(i))
 		            	#global_data.append(my_num)
 		            	print(my_num)
-		            
-		            	#global_data.append(my_num)
+		            	sheet.update_cell(1000,26,int(sheet.cell(1000,26).value)+1)
+		            	for i in range(len(my_num)):
+		            		columns=int(sheet.cell(1000,26).value)-1
+		            		sheet.update_cell(3+i,columns, my_num[i])
+                        #sheet.update_cell(1000,26,sheet.cell(1000,26).value+1)        	
             stream_context = model.createStream()
 if __name__ == '__main__':
     DEFAULT_SAMPLE_RATE = 16000
