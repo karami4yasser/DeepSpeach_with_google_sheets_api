@@ -24,7 +24,7 @@ creds = ServiceAccountCredentials.from_json_keyfile_name("creds.json", scope)
 
 client = gspread.authorize(creds)
 
-sheet = client.open("your_sheet_name").sheet1
+sheet = client.open("test").sheet1
 
 logging.basicConfig(level=20)
 
