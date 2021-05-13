@@ -24,7 +24,7 @@ creds = ServiceAccountCredentials.from_json_keyfile_name("creds.json", scope)
 
 client = gspread.authorize(creds)
 
-sheet = client.open("your_sheet_name").sheet1
+sheet = client.open("test").sheet1
 
 logging.basicConfig(level=20)
 
@@ -259,8 +259,15 @@ def main(ARGS):
 		            		empty=""
 		            	#print(nums)
 		            	columns=int(sheet.cell(1000,26).value)
-		            	for i in nums:
-		            		sheet.update_cell(3+i,columns,w2n.word_to_num(i) )
+		            	for i in range(len(num)):
+		            		try:
+		            		    sheet.update_cell(3+i,columns,w2n.word_to_num(num[i]) )
+		            		except:
+		            		    print(f"a number speled wrong ?{num[i]}")
+		            		finally:
+		            			sheet.update_cell(3+i,columns,w2n.word_to_num("one"))
+		            		        
+
 		            		
 		            		#my_num.append(w2n.word_to_num(i))
 
