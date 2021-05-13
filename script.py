@@ -264,8 +264,9 @@ def main(ARGS):
 		            		    sheet.update_cell(3+i,columns,w2n.word_to_num(nums[i]) )
 		            		except:
 		            		    print(f"a number speled wrong ?{nums[i]}")
-		            		finally:
-		            			sheet.update_cell(3+i,columns,w2n.word_to_num("one"))
+		            		    sheet.update_cell(3+i,columns,w2n.word_to_num("one"))
+		            		#finally:
+		            			#sheet.update_cell(3+i,columns,w2n.word_to_num("one"))
 		            		        
 
 		            		
