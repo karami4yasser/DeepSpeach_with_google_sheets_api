@@ -257,13 +257,13 @@ def main(ARGS):
 		            			empty+=" "
 		            		nums.append(empty)
 		            		empty=""
-		            	#print(nums)
+		            	print(nums)
 		            	columns=int(sheet.cell(1000,26).value)
-		            	for i in range(len(num)):
+		            	for i in range(len(nums)):
 		            		try:
-		            		    sheet.update_cell(3+i,columns,w2n.word_to_num(num[i]) )
+		            		    sheet.update_cell(3+i,columns,w2n.word_to_num(nums[i]) )
 		            		except:
-		            		    print(f"a number speled wrong ?{num[i]}")
+		            		    print(f"a number speled wrong ?{nums[i]}")
 		            		finally:
 		            			sheet.update_cell(3+i,columns,w2n.word_to_num("one"))
 		            		        
