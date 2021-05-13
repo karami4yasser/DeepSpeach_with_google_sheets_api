@@ -22,5 +22,5 @@ sheet = client.open("your_sheet_name").sheet1  # tape your sheet's name
 sheet.update_cell(1000,26, 2)  # Update one cell
 
 cell = sheet.cell(1000,26).value
-print(f"we start with filling the {cell}olumn ")
+print(f"we start with filling the {cell} column ")
 #numRows = sheet.row_count  # Get the number of rows in the sheet
