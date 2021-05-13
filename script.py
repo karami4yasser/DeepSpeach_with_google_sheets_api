@@ -257,7 +257,7 @@ def main(ARGS):
 		            			empty+=" "
 		            		nums.append(empty)
 		            		empty=""
-		            	print(nums)
+		            	#print(nums)
 		            	columns=int(sheet.cell(1000,26).value)
 		            	for i in range(len(nums)):
 		            		try:
