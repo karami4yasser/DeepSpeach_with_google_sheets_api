@@ -258,15 +258,19 @@ def main(ARGS):
 		            		nums.append(empty)
 		            		empty=""
 		            	#print(nums)
+		            	columns=int(sheet.cell(1000,26).value)
 		            	for i in nums:
+		            		sheet.update_cell(3+i,columns,w2n.word_to_num(i) )
 		            		
-		            		my_num.append(w2n.word_to_num(i))
+		            		#my_num.append(w2n.word_to_num(i))
+
 		            	#global_data.append(my_num)
-		            	print(my_num)
+		            	#print(my_num)
+		            	#columns=int(sheet.cell(1000,26).value)-1
 		            	sheet.update_cell(1000,26,int(sheet.cell(1000,26).value)+1)
-		            	for i in range(len(my_num)):
-		            		columns=int(sheet.cell(1000,26).value)-1
-		            		sheet.update_cell(3+i,columns, my_num[i])
+		            	#for i in range(len(my_num)):
+		            		#columns=int(sheet.cell(1000,26).value)-1
+		            		#sheet.update_cell(3+i,columns, my_num[i])
                         #sheet.update_cell(1000,26,sheet.cell(1000,26).value+1)        	
             stream_context = model.createStream()
 if __name__ == '__main__':
